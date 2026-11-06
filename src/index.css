@@ -89,11 +89,9 @@ h1 { margin: 0; font-size: 1.5rem; font-weight: 650; }
   color: var(--ink);
   font-weight: 700;
   font-size: 1.15rem;
-  cursor: default;
   flex: none;
 }
 .num.end { background: var(--gold); }
-.num.focus { box-shadow: 0 0 0 3px var(--text); }
 .colhead { display: grid; place-items: center; }
 
 .summary { display: flex; align-items: center; gap: 10px; }
@@ -130,9 +128,6 @@ h1 { margin: 0; font-size: 1.5rem; font-weight: 650; }
 .tile.arthur .face .body { fill: var(--arthur-bg); }
 .tile.table { opacity: 0.18; }
 .tile.table:hover { opacity: 0.4; }
-.tile.hl { box-shadow: 0 0 0 2px var(--gold); }
-.tile.dim { opacity: 0.3; }
-.tile.table.dim { opacity: 0.08; }
 
 .tile.best {
   border-color: var(--gold);

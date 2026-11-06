@@ -14,7 +14,7 @@ Built for the **Draw** variant played **1v1**, to help you complete **Gambler Ch
 4. **Press "Opponent drew"** whenever he draws. He can't hold the current end numbers, and the app remembers that. When the boneyard is empty the button becomes "Opponent passed".
 5. **Follow the suggestion.** The best move is highlighted on the board. Every alternative lists its reasons: whether it blocks him, whether you keep a follow-up, how many points it sheds.
 
-Each number's tiles are shown once, in a triangle: tile `i|j` sits at row `i`, column `j`, so every tile with a given number lies on its row plus its column. Hover a number to highlight them. Next to each row you'll see how many tiles with that number are still unseen and the chance he holds one.
+Each tile is shown once, in a triangle: tile `i|j` sits at row `i`, column `j`, so every tile with a given number lies on its row plus its column. Next to each row you'll see how many tiles with that number are still unseen and the chance he holds one.
 
 Your round is saved in the browser, so closing the tab doesn't lose it. The interface is available in English and Portuguese (PT/EN toggle at the top).
 

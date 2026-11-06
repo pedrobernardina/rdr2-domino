@@ -1,5 +1,5 @@
-import { useState, type Dispatch } from 'react'
-import { PIPS, pipsOf, tileId, unknownWith, type Pip, type TileId } from './domino'
+import type { Dispatch } from 'react'
+import { PIPS, tileId, unknownWith, type Pip, type TileId } from './domino'
 import { openEnds, type Action, type Game } from './game'
 import { pHasNumber, type OppModel } from './odds'
 import { TileButton } from './Tile'
@@ -49,28 +49,19 @@ export function Board({
   bestTile: TileId | null
   dispatch: Dispatch<Action>
 }) {
-  const [focus, setFocus] = useState<Pip | null>(null)
   const ends = openEnds(game.ends)
-  const has = (id: TileId, ns: Pip[]) => pipsOf(id).some((x) => ns.includes(x))
-
-  const numProps = (n: Pip) => ({
-    onMouseEnter: () => setFocus(n),
-    className: `num${ends.includes(n) ? ' end' : ''}${focus === n ? ' focus' : ''}`,
-  })
+  const numClass = (n: Pip) => `num${ends.includes(n) ? ' end' : ''}`
 
   return (
-    <section
-      className={`board${focus === null ? '' : ' focusing'}`}
-      onMouseLeave={() => setFocus(null)}
-    >
+    <section className="board">
       {PIPS.map((n) => (
         <div key={`c${n}`} className="colhead" style={{ gridColumn: n + 2, gridRow: 1 }}>
-          <span {...numProps(n)}>{n}</span>
+          <span className={numClass(n)}>{n}</span>
         </div>
       ))}
       {PIPS.map((i) => (
         <div key={`r${i}`} className="summary" style={{ gridColumn: 1, gridRow: i + 2 }}>
-          <span {...numProps(i)}>{i}</span>
+          <span className={numClass(i)}>{i}</span>
           <span className="text">
             <NumSummary
               unknown={unknownWith(game.tiles, i)}
@@ -90,8 +81,6 @@ export function Board({
               right={j}
               state={game.tiles[id]}
               best={id === bestTile}
-              highlight={focus === null ? has(id, ends) : has(id, [focus])}
-              dim={focus !== null && !has(id, [focus])}
               style={{ gridColumn: j + 2, gridRow: i + 2 }}
               onForward={() => dispatch({ type: 'step', id, dir: 1 })}
               onBack={() => dispatch({ type: 'step', id, dir: -1 })}

@@ -50,8 +50,6 @@ export function TileButton({
   right,
   state,
   best,
-  highlight,
-  dim,
   style,
   onForward,
   onBack,
@@ -60,8 +58,6 @@ export function TileButton({
   right: Pip
   state: TileState
   best?: boolean
-  highlight?: boolean
-  dim?: boolean
   style?: CSSProperties
   onForward: () => void
   onBack: () => void
@@ -70,7 +66,7 @@ export function TileButton({
   return (
     <button
       type="button"
-      className={`tile ${state}${best ? ' best' : ''}${highlight ? ' hl' : ''}${dim ? ' dim' : ''}`}
+      className={`tile ${state}${best ? ' best' : ''}`}
       style={style}
       title={`${left}|${right}: ${label}`}
       aria-label={`${left}|${right}, ${label}`}
